@@ -122,7 +122,7 @@ cf api https://api.mgmt.cf.sgcc.demo.lan --skip-ssl-validation
 ```
 ## login to ICP CF
 ```
-cf login -u cfadmin -p  icpcf210
+cf login -u <user-id> -p  <user-password>
 ```
 
 ## Push the application
