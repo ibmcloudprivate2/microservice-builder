@@ -44,15 +44,15 @@ bx dev run
 # access the application
 using a browser access
 ```
-http://localhost:9080
+[local app url](http://localhost:9080)
 ```
 ## check application health status
 ```
-http://localhost:9080/javaservice/health
+[check app health](http://localhost:9080/javaservice/health)
 ```
 ## access the default API of the microservice
 ```
-http://localhost:9080/javaservice/v1/example
+[RES API](http://localhost:9080/javaservice/v1/example)
 ```
 
 ## login to ICP private docker registery
@@ -113,7 +113,24 @@ name | value
 -----| -----
 app | js-javaservice
 
+# Edit the source and rebuild, tag, and Push
+You can edit the source code
+- API Endpoint
+- the health endpoint
 
+## edit API Engpoint
+edit the source **Example.java** located at folder /javaservice/src/main/java/application/rest/v1/
+
+## edit HealthEndpoint
+edit the source **HealthEndpoint.java** located at folder /javaservice/src/main/java/application/
+
+## Build, Test, Push
+To rebuild, and dockerize the image, run, once you are happy with the result locally you can push the image to ICP private repo.
+
+```
+mvn install
+bx dev run
+```
 # Push the application to ICP CF
 
 ## set API endpoint
@@ -135,5 +152,7 @@ cf push javaservice -p target/javaservice-1.0-SNAPSHOT.zip -b https://github.com
 cf apps
 ```
 
-
+With above you will see the list, find the application url and test it.
+```
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://spring-boot-cli-application.apps.cf.sgcc.demo.lan/
+```
